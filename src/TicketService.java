@@ -1,7 +1,12 @@
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicketService {
+
+    private List<Ticket> tickets = new ArrayList<>(10);
+
     public static void main(String[] args) {
         Ticket ticket1 = new Ticket();
         Ticket ticket2 = new Ticket(196, "Pantheon",
@@ -12,5 +17,19 @@ public class TicketService {
                 toInstant().toEpochMilli());
 
 
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+    }
+
+    public List<Ticket> getTicketsByStadiumSector(String stadiumSector) {
+        List<Ticket> ticketsByStadiumSector = new ArrayList<>();
+        for (Ticket ticket : tickets) {
+            if (stadiumSector.equals(ticket.getStadiumSector())) {
+                ticketsByStadiumSector.add(ticket);
+            }
+        }
+        return ticketsByStadiumSector;
     }
 }

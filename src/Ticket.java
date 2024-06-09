@@ -74,4 +74,8 @@ public class Ticket {
     public BigDecimal getPrice() {
         return price;
     }
+
+    public String getStadiumSector() {
+        return stadiumSector;
+    }
 }
