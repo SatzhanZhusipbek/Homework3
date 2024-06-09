@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicketService {
+    private static final List<Ticket> tickets = new ArrayList<>();
     public static void main(String[] args) {
         Ticket ticket1 = new Ticket();
         Ticket ticket2 = new Ticket(196, "Pantheon",
@@ -33,15 +34,22 @@ public class TicketService {
         Ticket ticket10 = new Ticket(194, "Pantheon",
                 101, LocalDateTime.parse("2024-06-30T19:30:00").atZone(ZoneId.of("Asia/Almaty")).
                 toInstant().toEpochMilli(), false, "C", 10.5);
-        List<Ticket> tickets = new ArrayList<>;
+
         tickets.add(ticket1); tickets.add(ticket2); tickets.add(ticket3);
         tickets.add(ticket4); tickets.add(ticket5); tickets.add(ticket6);
         tickets.add(ticket7); tickets.add(ticket8); tickets.add(ticket9);
         tickets.add(ticket10);
 
 
+    }
 
-
-
+    public static Ticket getTicketById(int id) {
+        Ticket searchedTicket = null;;
+        for (int i = 0; i < tickets.size(); i++) {
+            if (tickets.get(i).getID()==id) {
+                searchedTicket = tickets.get(i);
+            }
+        }
+        return searchedTicket;
     }
 }

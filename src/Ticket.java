@@ -1,5 +1,7 @@
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.TimeZone;
 
 public class Ticket {
 
@@ -34,7 +36,7 @@ public class Ticket {
         if (eventCode > 999 ) {
             throw new IllegalArgumentException("The ID should be 3 digits max!");
         }
-        if (!stadiumSector.contains("A") || !stadiumSector.contains("B") || !stadiumSector.contains("C")) {
+        if (!stadiumSector.contains("A") && !stadiumSector.contains("B") && !stadiumSector.contains("C")) {
             throw new IllegalArgumentException("The available stadium sectors are only A, B and C!");
         }
         this.ID = ID;
@@ -74,4 +76,17 @@ public class Ticket {
     public BigDecimal getPrice() {
         return price;
     }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String toString() {
+        return "Id: " + ID + " Concert hall: " + concertHall +
+                " event code: " + eventCode + " time: " +  LocalDateTime.
+                ofInstant(Instant.ofEpochMilli(time),
+                TimeZone.getDefault().toZoneId())
+                + " stadium sector: " + stadiumSector;
+    }
+
 }
