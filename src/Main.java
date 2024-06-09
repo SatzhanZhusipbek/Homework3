@@ -14,6 +14,19 @@ public class Main {
                 atZone(ZoneId.of("Asia/Almaty")).
                 toInstant().toEpochMilli());
 
+        Ticket ticket4 = new Ticket(196, "Pantheon",
+                101, LocalDateTime.parse("2024-06-30T19:30:00").atZone(ZoneId.of("Asia/Almaty")).
+                toInstant().toEpochMilli(), false, "A", 10.5);
+        Ticket ticket5 = new Ticket(196, "Pantheon",
+                101, LocalDateTime.parse("2024-06-30T19:30:00").atZone(ZoneId.of("Asia/Almaty")).
+                toInstant().toEpochMilli(), false, "B", 10.5);
 
+        ticketService.addTicket(ticket2);
+        ticketService.addTicket(ticket4);
+        ticketService.addTicket(ticket5);
+
+        System.out.println(ticketService.getTicketsByStadiumSector("A").size());
+        System.out.println(ticketService.getTicketsByStadiumSector("B").size());
+        System.out.println(ticketService.getTicketsByStadiumSector("C").size());
     }
 }
